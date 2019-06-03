@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { BlogPostTemplate } from '../../templates/blog-post'
+import { BitTemplate } from '../../templates/bit'
 
-const BlogPostPreview = ({ entry, widgetFor }) => (
-  <BlogPostTemplate
+const BitPreview = ({ entry, widgetFor }) => (
+  <BitTemplate
     content={widgetFor('body')}
     description={entry.getIn(['data', 'description'])}
     tags={entry.getIn(['data', 'tags'])}
@@ -11,11 +11,11 @@ const BlogPostPreview = ({ entry, widgetFor }) => (
   />
 )
 
-BlogPostPreview.propTypes = {
+BitPreview.propTypes = {
   entry: PropTypes.shape({
     getIn: PropTypes.func,
   }),
   widgetFor: PropTypes.func,
 }
 
-export default BlogPostPreview
+export default BitPreview

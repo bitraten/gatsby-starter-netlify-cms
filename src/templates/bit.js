@@ -6,7 +6,7 @@ import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 
-export const BlogPostTemplate = ({
+export const BitTemplate = ({
   content,
   contentComponent,
   description,
@@ -20,14 +20,14 @@ export const BlogPostTemplate = ({
     <section className="section">
       {helmet || ''}
       <div className="container content">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
+        <div className="columns is-centered">
+          <div className="column is-7">
+            <h1 className="title is-size-3 has-text-weight-bold is-bold-light">
               {title}
             </h1>
             <p>{description}</p>
             <PostContent content={content} />
-            {tags && tags.length ? (
+            {/*{tags && tags.length ? (
               <div style={{ marginTop: `4rem` }}>
                 <h4>Tags</h4>
                 <ul className="taglist">
@@ -38,7 +38,7 @@ export const BlogPostTemplate = ({
                   ))}
                 </ul>
               </div>
-            ) : null}
+            ) : null}*/}
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@ export const BlogPostTemplate = ({
   )
 }
 
-BlogPostTemplate.propTypes = {
+BitTemplate.propTypes = {
   content: PropTypes.node.isRequired,
   contentComponent: PropTypes.func,
   description: PropTypes.string,
@@ -54,12 +54,12 @@ BlogPostTemplate.propTypes = {
   helmet: PropTypes.object,
 }
 
-const BlogPost = ({ data }) => {
+const Bit = ({ data }) => {
   const { markdownRemark: post } = data
 
   return (
     <Layout>
-      <BlogPostTemplate
+      <BitTemplate
         content={post.html}
         contentComponent={HTMLContent}
         description={post.frontmatter.description}
@@ -79,16 +79,16 @@ const BlogPost = ({ data }) => {
   )
 }
 
-BlogPost.propTypes = {
+Bit.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.object,
   }),
 }
 
-export default BlogPost
+export default Bit
 
 export const pageQuery = graphql`
-  query BlogPostByID($id: String!) {
+  query BitByID($id: String!) {
     markdownRemark(id: { eq: $id }) {
       id
       html
